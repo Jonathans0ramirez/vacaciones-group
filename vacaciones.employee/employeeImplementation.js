@@ -14,7 +14,7 @@ module.exports = {
         let id
         const question1 = () => {
             return new Promise((resolve, reject) => {
-                rl.question("Por favor ingresa tu id: ", IdAnswer => {
+                rl.question("Ingresa tu id: ", IdAnswer => {
                     id = IdAnswer
                     resolve()
                 })
