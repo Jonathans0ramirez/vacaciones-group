@@ -1,3 +1,7 @@
+/*
+* Collection of employees for testing
+*/ 
+
 exports.employees = [
     {
         employee_id: 1,
@@ -38,7 +42,7 @@ exports.employees = [
     {
         employee_id: 7,
         name: 'Santiago Quintero Hincapié',
-        accrued_leave_days: 0,
+        accrued_leave_days: 3,
         requested_leave_days: 1,
     },
 ];

@@ -24,9 +24,9 @@ message LeaveFeedback {
     float accrued_leave_days = 2;
     float granted_leave_days = 3;
 }
-
+// Message Type definition for an empty object. 
 message Empty {}
-
+// Message Type definition for EmployeeList response.
 message EmployeeList {
     repeated Employee employees = 1;
 }

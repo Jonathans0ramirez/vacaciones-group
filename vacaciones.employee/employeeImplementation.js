@@ -1,13 +1,14 @@
-const fs = require('fs');
-const grpc = require('grpc');
+// Import read console lines
 let readline = require('readline');
 
+// Interface to read terminal Lines
 var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
     terminal: false
 })
 
+// Logic for each of the services required by the client [employee].
 module.exports = {
     eligibleForLeave(employee) {
         let id
@@ -27,9 +28,9 @@ module.exports = {
 
             employee.eligibleForLeave(newEmployee, (error, employeeData) => {
                 if (!error) {
-                    console.log('Empleado encontrado. \nGenerando resultados...\n', employeeData)
-                    if (employeeData) {
-                        console.log("Generando Permiso...");
+                    console.log('---Empleado encontrado---\n\nGenerando resultados...\n', employeeData)
+                    if (employeeData.eligible) {
+                        console.log("\nGenerando Permiso...");
                         this.grantLeave(employee, newEmployee.employee_id)
                     }
                 } else {
@@ -46,7 +47,7 @@ module.exports = {
         }
         employee.grantLeave(newEmployee, (error, employee) => {
             if (!error) {
-                console.log('\n', employee)
+                console.log(employee)
             } else {
                 console.error(error)
             }
@@ -60,7 +61,7 @@ module.exports = {
 
         const question1 = () => {
             return new Promise((resolve, reject) => {
-                rl.question("Por favor ingresa tu nombre: ", NameAnswer => {
+                rl.question("Ingresa tu nombre: ", NameAnswer => {
                     username = NameAnswer
                     resolve()
                 })
@@ -68,7 +69,7 @@ module.exports = {
         }
         const question2 = () => {
             return new Promise((resolve, reject) => {
-                rl.question("Por favor ingresa tus días de trabajo acumulado: ", AccAnswer => {
+                rl.question("Ingresa tus días de trabajo acumulado: ", AccAnswer => {
                     accdays = AccAnswer
                     resolve()
                 })
@@ -76,7 +77,7 @@ module.exports = {
         }
         const question3 = () => {
             return new Promise((resolve, reject) => {
-                rl.question("Por favor ingresa la cantidad de días solicitados de descanso: ", ReqAnswer => {
+                rl.question("Ingresa la cantidad de días de vacaciones solicitados: ", ReqAnswer => {
                     reqdays = ReqAnswer
                     resolve()
                 })
@@ -95,7 +96,7 @@ module.exports = {
 
             employee.insert(newEmployee, (error, employee) => {
                 if (!error) {
-                    console.log('Nuevo empleado ingresado', employee)
+                    console.log('Nuevo empleado ingresado \n\n', employee)
                 } else {
                     console.error(error)
                 }

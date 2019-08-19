@@ -1,7 +1,10 @@
+// Import gRPC
 const grpc = require('grpc')
-const data = require('./employees')
-// const uuidv1 = require('uuid/v1')
 
+// Import the testing employees data.
+const data = require('./employees')
+
+// Logic for each of the services exposed by the server to the client.
 module.exports = {
     eligibleForLeave: (call, callback) => {
         let employee = data.employees.find((n) => n.employee_id == call.request.employee_id)
